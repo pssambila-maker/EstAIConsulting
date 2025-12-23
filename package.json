@@ -1,0 +1,25 @@
+{
+  "name": "est-ai-consulting",
+  "version": "1.0.0",
+  "description": "EST AI Consulting & Training - Professional AI education and consulting services",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "ai",
+    "consulting",
+    "training",
+    "education",
+    "machine-learning"
+  ],
+  "author": "EST AI Consulting",
+  "license": "MIT",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  },
+  "devDependencies": {
+    "vercel": "^33.0.0"
+  }
+}

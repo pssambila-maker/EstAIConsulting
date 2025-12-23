@@ -1,0 +1,1 @@
+Build a beautiful landing  page for my AI Consulting and Training page. Make is professional and catchy that can attract people new to AI. Auto Claude 

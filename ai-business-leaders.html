@@ -6,6 +6,7 @@
     <title>AI for Business Leaders - 6-Week Program | EST AI Consulting & Training</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="course.css">
+    <link rel="stylesheet" href="lead-capture.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -519,6 +520,9 @@
                 <h2>Investment Options</h2>
                 <p>Choose the format that fits your schedule and needs</p>
             </div>
+
+            <!-- Gated Content: Pricing requires lead submission -->
+            <div class="gated-content hidden">
             <div class="pricing-cards">
                 <div class="pricing-card">
                     <h3>Executive Cohort</h3>
@@ -575,6 +579,18 @@
                     <a href="#contact-form" class="btn-pricing">Contact Us</a>
                 </div>
             </div>
+            </div>
+            <!-- End Gated Content -->
+
+            <!-- Overlay for non-submitted users -->
+            <div class="gated-overlay">
+                <h3>🔒 Unlock Pricing & Enrollment</h3>
+                <p>Submit your information to view detailed pricing options and enroll in this executive program.</p>
+                <button class="btn-unlock-content" onclick="showLeadCapturePopup('business-leaders')">
+                    Get Free Access Now
+                </button>
+            </div>
+
         </div>
     </section>
 
@@ -759,5 +775,6 @@
     <script src="script.js"></script>
     <script src="course.js"></script>
     <script src="payment.js"></script>
+    <script src="lead-capture.js"></script>
 </body>
 </html>

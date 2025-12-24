@@ -1,1 +1,16 @@
-Build a beautiful landing  page for my AI Consulting and Training page. Make is professional and catchy that can attract people new to AI. Auto Claude 
+# EST AI Consulting & Training
+
+Professional AI consulting and training services website.
+
+## Features
+- Beautiful landing page with modern design
+- Three detailed course pages (AI Fundamentals, Business Leaders, Custom Training)
+- Stripe payment integration
+- Fully responsive design
+- Auto-deployment from GitHub to Vercel
+
+## Tech Stack
+- HTML5, CSS3, JavaScript
+- Stripe for payments
+- Vercel serverless functions
+- GitHub for version control

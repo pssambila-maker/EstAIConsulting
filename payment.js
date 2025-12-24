@@ -1,32 +1,28 @@
 // Stripe Payment Integration for EST AI Consulting
 
-// NOTE: Replace 'pk_test_YOUR_PUBLISHABLE_KEY' with your actual Stripe publishable key
-const STRIPE_PUBLISHABLE_KEY = 'pk_test_YOUR_PUBLISHABLE_KEY';
+// Stripe Publishable Key (safe to expose in frontend)
+const STRIPE_PUBLISHABLE_KEY = 'pk_test_51SYywuFf6N98VLA3GkHVCWEWeOHz2Cdgqt83vKz4JpSQNTbM4VHb2gH3ymjnVUOKWjAARcJfPjfn7bPLQW7wWUvh00sJJcqQnD';
 
 // Initialize Stripe (will be loaded from Stripe.js script)
 let stripe;
 
-// Course pricing information
+// Course pricing information (Price IDs handled by Netlify Function)
 const courses = {
     'ai-fundamentals-self-paced': {
         name: 'AI Fundamentals - Self-Paced',
-        price: 497,
-        priceId: 'price_YOUR_PRICE_ID_1' // Replace with actual Stripe Price ID
+        price: 497
     },
     'ai-fundamentals-cohort': {
         name: 'AI Fundamentals - Cohort-Based',
-        price: 997,
-        priceId: 'price_YOUR_PRICE_ID_2'
+        price: 997
     },
     'business-leaders-executive': {
         name: 'AI for Business Leaders - Executive Cohort',
-        price: 4997,
-        priceId: 'price_YOUR_PRICE_ID_3'
+        price: 4997
     },
     'business-leaders-team': {
         name: 'AI for Business Leaders - Team Package',
-        price: 12997,
-        priceId: 'price_YOUR_PRICE_ID_4'
+        price: 12997
     }
 };
 

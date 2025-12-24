@@ -4,15 +4,18 @@
   "description": "EST AI Consulting & Training - Professional AI education and consulting services",
   "main": "index.html",
   "scripts": {
-    "dev": "vercel dev",
-    "deploy": "vercel --prod"
+    "dev": "netlify dev",
+    "build": "echo 'No build step required'",
+    "deploy": "netlify deploy --prod"
   },
   "keywords": [
     "ai",
     "consulting",
     "training",
     "education",
-    "machine-learning"
+    "machine-learning",
+    "stripe",
+    "netlify"
   ],
   "author": "EST AI Consulting",
   "license": "MIT",
@@ -20,6 +23,6 @@
     "stripe": "^14.0.0"
   },
   "devDependencies": {
-    "vercel": "^33.0.0"
+    "netlify-cli": "^17.0.0"
   }
 }

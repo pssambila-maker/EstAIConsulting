@@ -75,8 +75,8 @@ async function handlePayment(course, courseId) {
         // Show loading state
         showNotification('Redirecting to secure checkout...', 'info');
 
-        // Create checkout session via Vercel serverless function
-        const response = await fetch('/api/create-checkout-session', {
+        // Create checkout session via Netlify serverless function
+        const response = await fetch('/.netlify/functions/create-checkout-session', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -85,40 +85,36 @@ async function handleLeadFormSubmit(event) {
     submitButton.textContent = 'Submitting...';
 
     try {
-        // Submit to Netlify Forms
-        const response = await fetch('/', {
+        // Submit to Netlify Forms in the background
+        fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams({
                 'form-name': 'lead-capture',
                 ...leadData
             }).toString()
-        });
+        }).catch(err => console.log('Background form submission:', err));
 
-        if (response.ok) {
-            // Store lead data
-            markLeadSubmitted(leadData);
+        // Store lead data immediately (don't wait for Netlify Forms)
+        markLeadSubmitted(leadData);
 
-            // Show success message
-            showNotification('Thank you! Full course details unlocked.', 'success');
+        // Show success message
+        showNotification('Thank you! Full course details unlocked.', 'success');
 
-            // Hide popup after short delay
-            setTimeout(() => {
-                hideLeadCapturePopup();
+        // Hide popup after short delay
+        setTimeout(() => {
+            hideLeadCapturePopup();
 
-                // Reload page to show gated content or redirect to course page
-                const currentPage = window.location.pathname;
-                if (currentPage === '/' || currentPage.includes('index.html')) {
-                    // Redirect to appropriate course page based on interest
-                    redirectToCourse(leadData.interest);
-                } else {
-                    // Reload current course page to show gated content
-                    window.location.reload();
-                }
-            }, 1500);
-        } else {
-            throw new Error('Form submission failed');
-        }
+            // Reload page to show gated content or redirect to course page
+            const currentPage = window.location.pathname;
+            if (currentPage === '/' || currentPage.includes('index.html')) {
+                // Redirect to appropriate course page based on interest
+                redirectToCourse(leadData.interest);
+            } else {
+                // Reload current course page to show gated content
+                window.location.reload();
+            }
+        }, 1500);
     } catch (error) {
         console.error('Lead capture error:', error);
         showNotification('Something went wrong. Please try again.', 'error');

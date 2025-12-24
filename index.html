@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EST AI Consulting & Training | Transform Your Business with AI</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="lead-capture.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -194,7 +195,7 @@
                         <li>Practical Use Cases</li>
                         <li>Hands-on Projects</li>
                     </ul>
-                    <a href="ai-fundamentals.html" class="btn-training">Learn More</a>
+                    <a href="ai-fundamentals.html" class="btn-training btn-learn-more" data-course="ai-fundamentals">Learn More</a>
                 </div>
                 <div class="training-card featured">
                     <div class="training-badge">Best Value</div>
@@ -207,7 +208,7 @@
                         <li>Change Management</li>
                         <li>Building AI Teams</li>
                     </ul>
-                    <a href="ai-business-leaders.html" class="btn-training">Learn More</a>
+                    <a href="ai-business-leaders.html" class="btn-training btn-learn-more" data-course="business-leaders">Learn More</a>
                 </div>
                 <div class="training-card">
                     <div class="training-badge">Advanced</div>
@@ -220,7 +221,7 @@
                         <li>Flexible Schedule</li>
                         <li>Ongoing Support</li>
                     </ul>
-                    <a href="custom-ai-training.html" class="btn-training">Learn More</a>
+                    <a href="custom-ai-training.html" class="btn-training btn-learn-more" data-course="custom-training">Learn More</a>
                 </div>
             </div>
         </div>
@@ -327,6 +328,76 @@
         </div>
     </footer>
 
+    <!-- Lead Capture Popup -->
+    <div class="lead-popup" id="leadCapturePopup">
+        <div class="popup-container">
+            <button class="popup-close" aria-label="Close">&times;</button>
+
+            <div class="popup-header">
+                <h2>Unlock Full Course Details</h2>
+                <p>Get instant access to pricing, curriculum, and enrollment options</p>
+            </div>
+
+            <div class="popup-body">
+                <ul class="popup-benefits">
+                    <li>View detailed course curriculum and learning outcomes</li>
+                    <li>See all pricing tiers and payment options</li>
+                    <li>Access exclusive enrollment bonuses</li>
+                    <li>Download free AI resources and guides</li>
+                </ul>
+
+                <form id="leadCaptureForm" name="lead-capture" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="lead-form">
+                    <!-- Netlify Forms -->
+                    <input type="hidden" name="form-name" value="lead-capture">
+                    <p style="display: none;">
+                        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                    </p>
+
+                    <div class="form-field">
+                        <label for="lead-name">Full Name <span class="required">*</span></label>
+                        <input
+                            type="text"
+                            id="lead-name"
+                            name="name"
+                            placeholder="John Doe"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-field">
+                        <label for="lead-email">Email Address <span class="required">*</span></label>
+                        <input
+                            type="email"
+                            id="lead-email"
+                            name="email"
+                            placeholder="john@company.com"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-field">
+                        <label for="lead-interest">I'm interested in <span class="required">*</span></label>
+                        <select id="lead-interest" name="course-interest" required>
+                            <option value="">Select a course...</option>
+                            <option value="ai-fundamentals">AI Fundamentals (4-Week Program)</option>
+                            <option value="business-leaders">AI for Business Leaders (6-Week Program)</option>
+                            <option value="custom-training">Custom AI Training (Flexible)</option>
+                            <option value="general">General Inquiry</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-submit-lead">Get Free Access Now</button>
+
+                    <p class="privacy-note">
+                        We respect your privacy. Your information will never be shared.<br>
+                        By submitting, you agree to our <a href="#">Privacy Policy</a>.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script src="lead-capture.js"></script>
 </body>
 </html>

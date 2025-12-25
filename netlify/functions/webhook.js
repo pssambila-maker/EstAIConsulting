@@ -3,10 +3,26 @@
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const sgMail = require('@sendgrid/mail');
+const { google } = require('googleapis');
 
 // Initialize SendGrid
 if (process.env.SENDGRID_API_KEY) {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+}
+
+// Initialize Google Sheets API
+let sheets;
+if (process.env.GOOGLE_SHEETS_CREDENTIALS) {
+    try {
+        const credentials = JSON.parse(process.env.GOOGLE_SHEETS_CREDENTIALS);
+        const auth = new google.auth.GoogleAuth({
+            credentials,
+            scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+        });
+        sheets = google.sheets({ version: 'v4', auth });
+    } catch (error) {
+        console.error('Failed to initialize Google Sheets:', error.message);
+    }
 }
 
 exports.handler = async (event, context) => {
@@ -118,6 +134,28 @@ async function fulfillOrder(session) {
         }
     } else {
         console.log('⚠️ SendGrid not configured or no customer email - skipping email');
+    }
+
+    // Log to Google Sheets
+    if (sheets && process.env.GOOGLE_SHEET_ID) {
+        try {
+            await logToGoogleSheets({
+                name: customerName,
+                email: customerEmail,
+                courseName: courseName,
+                courseId: courseId,
+                amountPaid: amountPaid,
+                currency: currency,
+                sessionId: session.id,
+                timestamp: new Date().toISOString()
+            });
+            console.log(`✅ Enrollment logged to Google Sheets`);
+        } catch (error) {
+            console.error('Failed to log to Google Sheets:', error.message);
+            // Don't throw - we still want to fulfill the order even if logging fails
+        }
+    } else {
+        console.log('⚠️ Google Sheets not configured - skipping logging');
     }
 
     console.log(`✅ Order fulfilled for ${customerEmail} - ${courseName}`);
@@ -375,4 +413,47 @@ function getCourseDetails(courseId) {
         nextSteps: 'Check your email for access instructions.',
         htmlNextSteps: '<p>Check your email for access instructions.</p>'
     };
+}
+
+/**
+ * Log enrollment to Google Sheets
+ */
+async function logToGoogleSheets(data) {
+    const { name, email, courseName, courseId, amountPaid, currency, sessionId, timestamp } = data;
+
+    // Format timestamp in readable format
+    const date = new Date(timestamp);
+    const formattedDate = date.toLocaleString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+    });
+
+    // Prepare row data
+    const row = [
+        formattedDate,           // A: Date/Time
+        name,                     // B: Customer Name
+        email,                    // C: Email
+        courseName,               // D: Course Name
+        courseId,                 // E: Course ID
+        `${currency} ${amountPaid}`, // F: Amount Paid
+        sessionId                 // G: Stripe Session ID
+    ];
+
+    try {
+        await sheets.spreadsheets.values.append({
+            spreadsheetId: process.env.GOOGLE_SHEET_ID,
+            range: 'Enrollments!A:G', // Sheet name and column range
+            valueInputOption: 'USER_ENTERED',
+            requestBody: {
+                values: [row]
+            }
+        });
+    } catch (error) {
+        console.error('Google Sheets append error:', error.message);
+        throw error;
+    }
 }

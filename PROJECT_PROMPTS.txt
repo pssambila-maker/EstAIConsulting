@@ -1,0 +1,140 @@
+================================================================================
+EST AI CONSULTING WEBSITE - ALL USER PROMPTS
+================================================================================
+
+This file contains all the prompts/requests made during the development of the
+EST AI Consulting website.
+
+Date: December 23, 2025
+Project: AI Consulting and Training Landing Page
+================================================================================
+
+PROMPT 1: Initial Project Request
+--------------------------------------------------------------------------------
+"Please read the Readme file and execute what is there."
+
+Content of Readme.md:
+"Build a beautiful landing page for my AI Consulting and Training page. Make is
+professional and catchy that can attract people new to AI. Auto Claude"
+
+================================================================================
+
+PROMPT 2: AI Fundamentals Course Page
+--------------------------------------------------------------------------------
+User provided a screenshot/image of an "AI Fundamentals" course card showing:
+- 4-Week Program
+- Description: "Perfect for beginners. Learn the basics of AI, machine learning,
+  and how to use AI tools in your daily work."
+- Curriculum items:
+  → Introduction to AI & ML
+  → AI Tools & Platforms
+  → Practical Use Cases
+  → Hands-on Projects
+- "Learn More" button
+
+Request: "Please build this page so that when a user click 'Learn More', it
+takes them to this page that has the content."
+
+================================================================================
+
+PROMPT 3: AI for Business Leaders Course Page
+--------------------------------------------------------------------------------
+User provided a screenshot/image of "AI for Business Leaders" course card showing:
+- "Best Value" badge
+- 6-Week Program
+- Description: "Strategic AI training for executives and managers. Make informed
+  decisions about AI adoption and investment."
+- Curriculum items:
+  → AI Strategy & ROI
+  → AI Ethics & Governance
+  → Change Management
+  → Building AI Teams
+- "Learn More" button
+
+Request: "Please build this page so that when a user click 'Learn More', it
+takes them to this page that has the content."
+
+================================================================================
+
+PROMPT 4: Custom AI Training Course Page
+--------------------------------------------------------------------------------
+User provided a screenshot/image of "Custom AI Training" course card showing:
+- "Advanced" badge
+- Flexible Duration
+- Description: "Tailored training programs designed specifically for your
+  organization's unique needs and goals."
+- Curriculum items:
+  → Custom Curriculum
+  → Industry-Specific Content
+  → Flexible Schedule
+  → Ongoing Support
+- "Learn More" button
+
+Request: "Please build this page so that when a user click 'Learn More', it
+takes them to this page that has the content."
+
+================================================================================
+
+PROMPT 5: Logo and Branding Update
+--------------------------------------------------------------------------------
+User provided a screenshot/image of the logo showing "EST AI Consulting"
+
+Request: "Please create a catchy and professional logo for this site. Also
+Change the name to EST AI Consulting"
+
+================================================================================
+
+PROMPT 6: Logo Size Adjustment
+--------------------------------------------------------------------------------
+User provided feedback about logo size
+
+Request: "Can we make the logo bigger."
+
+================================================================================
+
+PROMPT 7: Stripe Payment Integration
+--------------------------------------------------------------------------------
+Request: "I want to include an option for users to register and pay for the
+training using Stripe."
+
+================================================================================
+
+PROMPT 8: Project Documentation
+--------------------------------------------------------------------------------
+Request: "Please create two addition txt file. One that captures all the
+prompts and another on that has all the processes that Claude followed."
+
+================================================================================
+
+SUMMARY OF DELIVERABLES REQUESTED:
+================================================================================
+
+1. Main Landing Page
+   - Professional design for AI consulting and training
+   - Targeted at people new to AI
+   - Multiple sections: Hero, Services, About, Training, Contact, Footer
+
+2. Three Course Detail Pages
+   - AI Fundamentals (4-week beginner program)
+   - AI for Business Leaders (6-week executive program)
+   - Custom AI Training (flexible custom programs)
+
+3. Branding
+   - Professional logo design
+   - Brand name: EST AI Consulting
+   - Consistent branding across all pages
+
+4. Payment Integration
+   - Stripe payment processing
+   - Course enrollment with secure checkout
+   - Success and cancellation pages
+   - Backend example code
+
+5. Documentation
+   - Stripe setup guide
+   - Project prompts log (this file)
+   - Development process documentation
+
+================================================================================
+END OF PROJECT PROMPTS
+================================================================================

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - EST AI Consulting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0f1e 0%, #1a1f3a 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 15, 30, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #8a2be2, #00d4ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #8a2be2;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #8a2be2, #00d4ff);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 2rem 80px;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #8a2be2, #00d4ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #b0b0b0;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* Content Section */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 5rem;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #8a2be2, #00d4ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            color: #d0d0d0;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Steps */
+        .steps {
+            display: grid;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #8a2be2, #00d4ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            padding-top: 0.5rem;
+        }
+
+        .step-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .step-content p {
+            color: #b0b0b0;
+            line-height: 1.8;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(138, 43, 226, 0.5);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #8a2be2;
+        }
+
+        .card p {
+            color: #b0b0b0;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .card ul li {
+            padding: 0.5rem 0;
+            color: #d0d0d0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .card ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #8a2be2;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin-top: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #8a2be2, #00d4ff);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 0.5rem;
+            width: 15px;
+            height: 15px;
+            background: #8a2be2;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(138, 43, 226, 0.2);
+        }
+
+        .timeline-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .timeline-item p {
+            color: #b0b0b0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            border-radius: 12px;
+            padding: 4rem;
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #8a2be2, #00d4ff);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5);
+        }
+
+        .cta-button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(138, 43, 226, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 15, 30, 0.95);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(138, 43, 226, 0.2);
+            margin-top: 5rem;
+        }
+
+        footer p {
+            color: #808080;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .step {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .step-number {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .cta-section {
+                padding: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">EST AI CONSULTING</div>
+            <ul class="nav-links">
+                <li><a href="/">HOME</a></li>
+                <li><a href="/ai-business-leaders.html">ABOUT</a></li>
+                <li><a href="/custom-ai-training.html">SERVICE</a></li>
+                <li><a href="/custom-ai-training.html#contact-form">CONTACT</a></li>
+                <li><a href="/ai-fundamentals.html">GET STARTED</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Get Started with AI</h1>
+        <p>Your journey to AI transformation begins here</p>
+    </div>
+
+    <div class="container">
+        <!-- Introduction -->
+        <section class="section">
+            <h2>Why Start Now?</h2>
+            <p>
+                Artificial Intelligence is no longer a future technology—it's transforming businesses today. Organizations
+                that embrace AI now gain significant competitive advantages: increased efficiency, better decision-making,
+                enhanced customer experiences, and sustainable growth.
+            </p>
+            <p>
+                Whether you're just beginning to explore AI or ready to implement advanced solutions, EST AI Consulting
+                provides the expertise and support you need to succeed.
+            </p>
+        </section>
+
+        <!-- Getting Started Steps -->
+        <section class="section">
+            <h2>How to Get Started</h2>
+            <p>We've designed a straightforward onboarding process to help you begin your AI journey:</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Schedule a Consultation</h3>
+                        <p>
+                            Book a free 30-minute discovery call with our AI experts. We'll discuss your business goals,
+                            current challenges, and explore how AI can create value for your organization. No commitment
+                            required—just an honest conversation about possibilities.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Assessment & Planning</h3>
+                        <p>
+                            Our team conducts a comprehensive assessment of your organization's AI readiness, including
+                            technology infrastructure, data maturity, and team capabilities. We'll identify quick wins
+                            and develop a customized roadmap aligned with your strategic objectives.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Pilot Project</h3>
+                        <p>
+                            Start with a focused pilot project to demonstrate value and build confidence. We'll work
+                            together on a specific use case that delivers measurable results, allowing you to experience
+                            the benefits of AI firsthand while minimizing risk.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Scale & Optimize</h3>
+                        <p>
+                            Based on the pilot's success, we'll help you scale AI initiatives across your organization.
+                            This includes expanding to additional use cases, building internal capabilities through
+                            training, and establishing best practices for ongoing AI innovation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What You'll Learn -->
+        <section class="section">
+            <h2>What You'll Learn</h2>
+            <p>Our comprehensive approach ensures you gain both theoretical knowledge and practical skills:</p>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>AI Fundamentals</h3>
+                    <ul>
+                        <li>Core AI concepts and terminology</li>
+                        <li>Machine learning basics</li>
+                        <li>AI capabilities and limitations</li>
+                        <li>Real-world AI applications</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Strategic Implementation</h3>
+                    <ul>
+                        <li>Use case identification</li>
+                        <li>ROI calculation methods</li>
+                        <li>Change management strategies</li>
+                        <li>Risk mitigation approaches</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Technical Foundations</h3>
+                    <ul>
+                        <li>Data preparation and quality</li>
+                        <li>Model selection and evaluation</li>
+                        <li>Integration best practices</li>
+                        <li>Performance monitoring</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Leadership Skills</h3>
+                    <ul>
+                        <li>Building AI teams</li>
+                        <li>Vendor evaluation and selection</li>
+                        <li>Ethical AI considerations</li>
+                        <li>Future-proofing your strategy</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="section">
+            <h2>Typical Journey Timeline</h2>
+            <p>Every organization is unique, but here's what a typical AI transformation journey looks like:</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Month 1: Foundation</h3>
+                    <p>Initial consultation, assessment, and roadmap development. Team alignment and project scoping.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Months 2-3: Pilot Development</h3>
+                    <p>Design and implement your first AI pilot project. Gather data, build models, and begin testing.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Month 4: Pilot Launch & Evaluation</h3>
+                    <p>Deploy the pilot project and measure results. Collect feedback and refine the approach.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Months 5-6: Training & Expansion</h3>
+                    <p>Conduct team training programs and begin scaling successful initiatives to additional areas.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Months 7+: Continuous Improvement</h3>
+                    <p>Optimize existing AI systems, explore new use cases, and build sustainable AI capabilities.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investment -->
+        <section class="section">
+            <h2>Investment & Packages</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Starter Package</h3>
+                    <p>Perfect for organizations new to AI</p>
+                    <ul>
+                        <li>AI readiness assessment</li>
+                        <li>1-day executive workshop</li>
+                        <li>Custom roadmap development</li>
+                        <li>30-day email support</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Implementation Package</h3>
+                    <p>For teams ready to build AI solutions</p>
+                    <ul>
+                        <li>Everything in Starter</li>
+                        <li>Pilot project development</li>
+                        <li>Team training (up to 20 people)</li>
+                        <li>90-day implementation support</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Enterprise Package</h3>
+                    <p>Comprehensive AI transformation</p>
+                    <ul>
+                        <li>Everything in Implementation</li>
+                        <li>Multiple AI projects</li>
+                        <li>Unlimited team training</li>
+                        <li>12-month strategic partnership</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Take the first step toward AI-powered innovation today</p>
+            <div class="cta-buttons">
+                <a href="/custom-ai-training.html#contact-form" class="cta-button">Schedule Free Consultation</a>
+                <a href="/custom-ai-training.html" class="cta-button secondary">Explore Our Services</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 EST AI Consulting. All rights reserved.</p>
+    </footer>
+
+    <script type="module">
+        // AUTH PROTECTION - Check if user is logged in
+        (async () => {
+            try {
+                const { checkAuthAndRedirect } = await import('/auth-bundle.js');
+                await checkAuthAndRedirect('/register.html');
+            } catch (error) {
+                console.error('Auth check error:', error);
+            }
+        })();
+    </script>
+</body>
+</html>
